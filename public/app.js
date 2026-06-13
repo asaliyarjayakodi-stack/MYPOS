@@ -32,7 +32,16 @@ loginForm.addEventListener('submit', async (e) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
         });
-        const data = await res.json();
+        
+        let data;
+        const contentType = res.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+            data = await res.json();
+        } else {
+            const errorText = await res.text();
+            throw new Error(errorText || `Server error (${res.status})`);
+        }
+        
         if(!res.ok) throw new Error(data.error || 'Login failed');
         
         loginSuccess(data.token, data.business_name, data.role);
@@ -52,7 +61,16 @@ registerForm.addEventListener('submit', async (e) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password, business_name, whatsapp_number })
         });
-        const data = await res.json();
+        
+        let data;
+        const contentType = res.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+            data = await res.json();
+        } else {
+            const errorText = await res.text();
+            throw new Error(errorText || `Server error (${res.status})`);
+        }
+        
         if(!res.ok) throw new Error(data.error || 'Registration failed');
         
         loginSuccess(data.token, data.business_name, data.role);

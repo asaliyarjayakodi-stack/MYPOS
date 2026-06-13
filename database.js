@@ -10,7 +10,7 @@ const connectDB = async () => {
     }
 
     try {
-        const uri = process.env.MONGO_URI || 'mongodb+srv://mongodb+srv://saliya:Pavan9482@cluster0.rmpzksp.mongodb.net/?appName=Cluster0';
+        const uri = process.env.MONGO_URI || 'mongodb+srv://saliya:Pavan9482@cluster0.rmpzksp.mongodb.net/?appName=Cluster0';
         const db = await mongoose.connect(uri, {
             serverSelectionTimeoutMS: 5000 // Tweak timeout down so Serverless fails faster instead of hanging
         });
