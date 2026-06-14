@@ -10,7 +10,7 @@ const connectDB = async () => {
     }
 
     try {
-        const uri = process.env.MONGO_URI || 'mongodb://saliya:Pavan9482@ac-e29r2oi-shard-00-00.rmpzksp.mongodb.net:27017,ac-e29r2oi-shard-00-01.rmpzksp.mongodb.net:27017,ac-e29r2oi-shard-00-02.rmpzksp.mongodb.net:27017/?ssl=true&replicaSet=atlas-leqzap-shard-0&authSource=admin&retryWrites=true&w=majority';
+        const uri = process.env.MONGO_URI || 'mongodb://saliya:pavan9482@ac-e29r2oi-shard-00-00.rmpzksp.mongodb.net:27017,ac-e29r2oi-shard-00-01.rmpzksp.mongodb.net:27017,ac-e29r2oi-shard-00-02.rmpzksp.mongodb.net:27017/?ssl=true&replicaSet=atlas-leqzap-shard-0&authSource=admin&retryWrites=true&w=majority';
         const db = await mongoose.connect(uri, {
             serverSelectionTimeoutMS: 5000 // Tweak timeout down so Serverless fails faster instead of hanging
         });
